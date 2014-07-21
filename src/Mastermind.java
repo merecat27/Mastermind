@@ -31,7 +31,7 @@ public class Mastermind {
 			}
 		}
 		
-		System.out.println(solution);
+		//System.out.println(solution);
 		return solution;
 	}
 	
