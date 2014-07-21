@@ -18,6 +18,13 @@ public class Mastermind {
 		
 		return guess;
 	}
+	
+	private static boolean patternsMatch(ArrayList<Peg> first,
+			ArrayList<Peg> second) {
+		//TODO: print w or r depending on match.
+		//TODO: if patterns are same, return true.
+		return false;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
