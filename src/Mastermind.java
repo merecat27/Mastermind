@@ -31,6 +31,7 @@ public class Mastermind {
 			}
 		}
 		
+		System.out.println(solution);
 		return solution;
 	}
 	
@@ -69,23 +70,55 @@ public class Mastermind {
 		return guess;
 	}
 	
-	private static boolean patternsMatch(ArrayList<Peg> first,
-			ArrayList<Peg> second) {
-		//TODO: print w or r depending on match.
-		//TODO: if patterns are same, return true.
-		return false;
+	private static boolean patternsMatch(ArrayList<Peg> solution, ArrayList<Peg> guess){
+		
+		ArrayList<Boolean> reds = new ArrayList<Boolean>();
+		ArrayList<Boolean> whites = new ArrayList<Boolean>();
+		
+		for(int k = 0; k < PATTERN_LENGTH; k++){
+			if(solution.get(k).equals(guess.get(k))){
+				System.out.print("r");
+				reds.add(true);
+			}else{
+				reds.add(false);
+			}
+		}
+		
+		for(int k = 0; k < PATTERN_LENGTH; k++){
+			if(reds.get(k) == false){
+				for(int j = 0; j < PATTERN_LENGTH; j++){
+					if(reds.get(j) == false && (whites.size() <= j || whites.get(j) == false)){
+						if(solution.get(j).equals(guess.get(k))){
+							System.out.print("w");
+							whites.add(true);
+							break;
+						}else{
+							whites.add(false);
+						}
+					}
+				}
+			}
+		}
+		System.out.println();
+		return solution.equals(guess);
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Mastermind!");
-		
+		int x = 0;
 		ArrayList<Peg> solution = generateSolution();
 		ArrayList<Peg> guess;
 		do {
 			guess = getUserGuess();
+			x++;
 		} while(!patternsMatch(solution, guess));
 		
 		System.out.println("You win!");
+		if(x == 1){
+			System.out.println("It took you 1 try.");
+		}else{
+			System.out.println("It took you " + x + " tries.");
+		}
 	}
 
 }
