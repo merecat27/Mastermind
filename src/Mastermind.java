@@ -1,4 +1,6 @@
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Mastermind {
@@ -14,8 +16,36 @@ public class Mastermind {
 	
 	private static ArrayList<Peg> getUserGuess() {
 		ArrayList<Peg> guess = new ArrayList<Peg>(PATTERN_LENGTH);
-		//TODO: get user's guess, store in guess
+		//get user's guess, store in guess
+		System.out.println("Guess: ");
+		Scanner in = new Scanner(System.in);
+		String input = in.nextLine();
+		input = input.replace(" ", "").toLowerCase();
+		input += "rrrr"; //defaults if too short.
 		
+		for (int i=0; i < PATTERN_LENGTH; i++) {
+			Color color;
+			switch (input.charAt(i)) {
+			case 'r':
+				color = Color.red;
+				break;
+			case 'w':
+				color = Color.white;
+				break;
+			case 'b':
+				color = Color.blue;
+				break;
+			case 'o':
+				color = Color.orange;
+				break;
+			case 'g':
+				color = Color.green;
+				break;
+			default:
+				color = Color.yellow;
+			}
+			guess.add(new Peg(color));
+		}
 		return guess;
 	}
 	
@@ -37,7 +67,7 @@ public class Mastermind {
 			guess = getUserGuess();
 		} while(!patternsMatch(solution, guess));
 		
-		System.out.println("Game Over!");
+		System.out.println("You win!");
 	}
 
 }
