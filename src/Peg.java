@@ -16,4 +16,8 @@ public class Peg{
 		return other != null && other instanceof Peg
 				&& ((Peg) other).getPegColor().equals(pegColor);
 	}
+	
+	public String toString() {
+		return pegColor.toString();
+	}
 }
