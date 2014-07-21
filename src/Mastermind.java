@@ -104,7 +104,7 @@ public class Mastermind {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Mastermind!");
+		System.out.println("Welcome to Mastermind!\nThere are 4 pegs and 6 possible colors (white, yellow, red, green, orange, blue).\nMake your guess with the first letter of the color (ex. 'RGBY' for red green blue yellow).");
 		int x = 0;
 		ArrayList<Peg> solution = generateSolution();
 		ArrayList<Peg> guess;
