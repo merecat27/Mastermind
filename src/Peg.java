@@ -12,4 +12,8 @@ public class Peg{
 		return pegColor;
 	}
 	
+	public boolean equals(Object other) {
+		return other != null && other instanceof Peg
+				&& ((Peg) other).getPegColor().equals(pegColor);
+	}
 }
